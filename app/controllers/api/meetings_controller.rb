@@ -15,8 +15,13 @@ class Api::MeetingsController < ApplicationController
                            location: params[:location],
                            remote: params[:remote]
                             )
-    @meeting.save
-    render 'show.json.jbuilder'
+    if @meeting.save
+      render 'show.json.jbuilder'
+    else
+      render json: {errors: @meeting.errors.full_messages}, status: :unprocessable_entity
+    end
+
+
   end
 
 
@@ -27,8 +32,12 @@ class Api::MeetingsController < ApplicationController
     @meeting.location = params[:location] || @meeting.location
     @meeting.remote = params[:remote] || @meeting.remote
 
-    @meeting.save
-    render 'show.json.jbuilder'
+    if @meeting.save
+      render 'show.json.jbuilder'
+    else
+      render json: {errors: @meeting.errors.full_messages}, status: :unprocessable_entity
+    end
+
   end
 
   def destroy
