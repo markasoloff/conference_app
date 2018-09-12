@@ -7,14 +7,15 @@ class Api::MeetingsController < ApplicationController
 
   def show
     @meeting = Meeting.find(params[:id])
-    render 'show.json.jbuilder'
+    render "show.json.jbuilder"
   end
 
   def create
     @meeting = Meeting.new(title: params[:title],
                            agenda: params[:agenda],
                            location: params[:location],
-                           remote: params[:remote]
+                           remote: params[:remote],
+                           speaker_id: params[:speaker_id]
                             )
     if @meeting.save
       render 'show.json.jbuilder'
@@ -32,6 +33,7 @@ class Api::MeetingsController < ApplicationController
     @meeting.agenda = params[:agenda] || @meeting.agenda
     @meeting.location = params[:location] || @meeting.location
     @meeting.remote = params[:remote] || @meeting.remote
+    @meeting.speaker_id = params[:speaker_id] || @meeting.speaker_id
 
     if @meeting.save
       render 'show.json.jbuilder'
