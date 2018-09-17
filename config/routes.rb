@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     patch "speakers/:id" => "speakers#update"
     delete "speakers/:id" => "speakers#destroy"
 
+    post "/users" => "users#create"
+
+    post "/sessions" => "sessions#create"
+
+
 
 
   end
