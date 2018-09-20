@@ -1,1 +1,0 @@
-json.individual @meetings.first

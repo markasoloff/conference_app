@@ -5,3 +5,4 @@ json.location meeting.location
 json.remote meeting.remote
 json.speaker_id json.speaker_id
 json.speaker_email json.speaker_email
+json.topics meeting.topics
